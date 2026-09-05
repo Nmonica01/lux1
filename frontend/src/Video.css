@@ -1,0 +1,131 @@
+.camera-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.camera-card {
+  background: var(--bg-2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+}
+
+.camera-card.selected {
+  border-color: var(--accent);
+}
+
+.camera-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.camera-meta b {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.live-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ok);
+}
+
+.feed-visual {
+  position: relative;
+  margin-top: 10px;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-0);
+  border-radius: 6px;
+  overflow: hidden;
+  border: 0.5px solid var(--border);
+}
+
+.feed-visual video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.feed-visual.night {
+  filter: brightness(1.25) saturate(0.7) hue-rotate(-8deg);
+}
+
+.feed-visual.night::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(63, 169, 201, 0.05) 0px, rgba(63, 169, 201, 0.05) 1px, transparent 1px, transparent 3px);
+  pointer-events: none;
+}
+
+.scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  top: 40%;
+  opacity: 0.6;
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% {
+    top: 6%;
+  }
+  50% {
+    top: 90%;
+  }
+  100% {
+    top: 6%;
+  }
+}
+
+.target {
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--accent);
+  border-radius: 50%;
+  top: 32%;
+  left: 40%;
+  opacity: 0.5;
+}
+
+.target-two {
+  top: 55%;
+  left: 62%;
+  width: 22px;
+  height: 22px;
+}
+
+.camera-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.camera-footer strong {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  color: var(--text-primary);
+  font-weight: 500;
+  text-align: right;
+}
+
+.camera-footer strong small {
+  font-family: var(--font-sans);
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
